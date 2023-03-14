@@ -7,18 +7,20 @@ CREATE TABLE mail
     recipient_name      TEXT
 );
 
-CREATE TABLE post
+
+CREATE TABLE posts
 (
     index       SERIAL PRIMARY KEY UNIQUE,
     name        TEXT,
     address     TEXT
 );
 
+
 CREATE TABLE tracking
 (
     id          SERIAL PRIMARY KEY UNIQUE,
-    mailing_id  INTEGER,
-    post_index  INTEGER,
+    mail_id  INTEGER REFERENCES mail(id),
+    post_index  INTEGER REFERENCES posts(index),
     date_time   TIMESTAMP,
     status      TEXT
 );

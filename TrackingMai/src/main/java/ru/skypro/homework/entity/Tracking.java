@@ -1,6 +1,8 @@
 package ru.skypro.homework.entity;
 
 import lombok.Data;
+import ru.skypro.homework.model.Status;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 //
@@ -13,10 +15,13 @@ public class Tracking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    Integer mailingId;
-    Integer PostIndex;
+    @JoinColumn(name = "mail_id")
+    Integer mailId;
+
+    @JoinColumn(name = "post_index")
+    Integer postIndex;
 
     LocalDateTime dateTime;
-    String status;
+    Status status;
 
 }
